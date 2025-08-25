@@ -2,55 +2,55 @@
 @section('title', 'Edit Spare Part')
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="h2 text-dark">Edit Spare Part</h1>
+<div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold">Edit Spare Part</h1>
 </div>
 
-<div class="table-container">
-    <form action="{{ route('inventory.update', $sparepart) }}" method="POST" novalidate>
+<div class="card p-6">
+    <form action="{{ route('inventory.update', $sparepart) }}" method="POST" class="space-y-6">
         @csrf
         @method('PUT')
 
-        <div class="mb-3">
-            <label for="name" class="form-label">Part Name</label>
+        <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Part Name</label>
             <input id="name" type="text" name="name"
-                   class="form-control @error('name') is-invalid @enderror"
+                   class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('name') border-red-500 @enderror"
                    value="{{ old('name', $sparepart->name) }}" required maxlength="255">
-            @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            @error('name') <span class="text-red-600 dark:text-red-400 text-sm">{{ $message }}</span> @enderror
         </div>
 
-        <div class="mb-3">
-            <label for="category" class="form-label">Category</label>
+        <div>
+            <label for="category" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Category</label>
             <input id="category" type="text" name="category"
-                   class="form-control @error('category') is-invalid @enderror"
+                   class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('category') border-red-500 @enderror"
                    value="{{ old('category', $sparepart->category) }}" required maxlength="255">
-            @error('category') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            @error('category') <span class="text-red-600 dark:text-red-400 text-sm">{{ $message }}</span> @enderror
         </div>
 
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="quantity" class="form-label">Quantity</label>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="quantity" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Quantity</label>
                 <input id="quantity" type="number" name="quantity"
-                       class="form-control @error('quantity') is-invalid @enderror"
+                       class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('quantity') border-red-500 @enderror"
                        value="{{ old('quantity', $sparepart->quantity) }}" required min="0" step="1">
-                @error('quantity') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                @error('quantity') <span class="text-red-600 dark:text-red-400 text-sm">{{ $message }}</span> @enderror
             </div>
 
-            <div class="col-md-6 mb-3">
-                <label for="price" class="form-label">Price</label>
-                <div class="input-group">
+            <div>
+                <label for="price" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Price (USD)</label>
+                <div class="relative">
+                    <span class="absolute left-3 top-2 text-gray-500 dark:text-gray-400">$</span>
                     <input id="price" type="number" name="price"
-                           class="form-control @error('price') is-invalid @enderror"
+                           class="w-full pl-8 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('price') border-red-500 @enderror"
                            value="{{ old('price', $sparepart->price) }}" required min="0" step="0.01">
-                    <span class="input-group-text">USD</span>
                 </div>
-                @error('price') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                @error('price') <span class="text-red-600 dark:text-red-400 text-sm">{{ $message }}</span> @enderror
             </div>
         </div>
 
-        <div class="d-flex gap-2">
-            <button class="btn btn-primary">Save changes</button>
-            <a href="{{ route('inventory.index') }}" class="btn btn-outline-secondary">Cancel</a>
+        <div class="flex gap-3 pt-4">
+            <button type="submit" class="btn-primary">Save Changes</button>
+            <a href="{{ route('inventory.index') }}" class="btn">Cancel</a>
         </div>
     </form>
 </div>

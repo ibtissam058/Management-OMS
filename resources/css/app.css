@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme tokens (dark-first) */
+@layer base {
+  :root {
+    --bg: 15 15 15;          /* Very dark background */
+    --card: 25 25 25;        /* Dark card background */
+    --muted: 148 163 184;    /* slate-400 */
+    --ring: 51 65 85;        /* slate-600 */
+    --accent: 16 185 129;    /* emerald-500 */
+    --accent-600: 5 150 105; /* emerald-600 */
+  }
+  html { scroll-behavior: smooth; }
+  body { @apply text-gray-100; background-color: rgb(var(--bg)); }
+}
+
+/* Reusable UI */
+@layer components {
+  .layout      { @apply min-h-screen flex; }
+  .sidebar     { @apply hidden lg:flex lg:w-64 lg:flex-col bg-gray-900/80 border-r border-gray-800; }
+  .sidebar-head{ @apply h-14 px-4 flex items-center gap-2 border-b border-gray-800; }
+  .brand-dot   { @apply inline-flex items-center justify-center size-8 rounded-xl bg-emerald-600 text-white font-semibold; }
+  .nav         { @apply p-3 space-y-1; }
+  .nav-link    { @apply flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-gray-300 hover:bg-gray-800 transition; }
+  .nav-active  { @apply nav-link bg-gray-800 text-white ring-1 ring-emerald-600/30; }
+
+  .topbar      { @apply sticky top-0 z-30 h-14 bg-gray-900/80 backdrop-blur border-b border-gray-800; }
+  .icon-btn    { @apply inline-flex items-center justify-center rounded-xl px-2.5 py-2 text-sm ring-1 ring-inset ring-gray-700 hover:bg-gray-800; }
+  .search      { @apply hidden md:flex items-center gap-2 px-3 py-2 rounded-xl bg-gray-800 ring-1 ring-inset ring-gray-700 text-sm w-72; }
+  .btn         { @apply inline-flex items-center gap-2 rounded-xl px-3.5 py-2.5 text-sm font-medium ring-1 ring-inset ring-gray-700 hover:bg-gray-800 transition-colors; }
+  .btn-primary { @apply btn text-white bg-emerald-600 hover:bg-emerald-500 ring-0 shadow-sm; }
+
+  .container   { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-6; }
+  .card        { @apply rounded-2xl ring-1 ring-gray-700/50 shadow-lg; background-color: rgb(var(--card)); }
+  .kpi         { @apply card p-4; }
+  .kpi-label   { @apply text-xs text-gray-400; }
+  .kpi-value   { @apply mt-1 text-3xl font-bold; }
+
+  .table       { @apply min-w-full divide-y divide-gray-800; }
+  .th          { @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-400; }
+  .td          { @apply px-4 py-3 whitespace-nowrap text-sm text-gray-100; }
+
+  .badge       { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset; }
+  .badge-ok    { @apply bg-emerald-950/40 text-emerald-300 ring-emerald-900; }
+  .badge-warn  { @apply bg-amber-950/40 text-amber-300 ring-amber-900; }
+  .badge-bad   { @apply bg-rose-950/40 text-rose-300 ring-rose-900; }
+}
+
+/* Chart.js uses these tokens */
+:root {
+  --chart-grid: 75 85 99;   /* slate-700 */
+  --chart-line: var(--accent);
+  --chart-fill: 16 185 129; /* emerald-500 */
+}

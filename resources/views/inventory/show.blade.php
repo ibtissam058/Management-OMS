@@ -2,40 +2,71 @@
 @section('title', 'Spare Part Details')
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="h2 text-dark">Spare Part Details</h1>
-    <div class="d-flex gap-2">
-        <a href="{{ route('inventory.edit', $sparepart) }}" class="btn btn-warning">
-            <i class="fas fa-edit me-1"></i> Edit
+<div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold">Spare Part Details</h1>
+    <div class="flex gap-3">
+        <a href="{{ route('inventory.edit', $sparepart) }}" class="btn-primary">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+            </svg>
+            Edit
         </a>
-        <a href="{{ route('inventory.index') }}" class="btn btn-outline-secondary">
-            Back
-        </a>
+        <a href="{{ route('inventory.index') }}" class="btn">Back to List</a>
     </div>
 </div>
 
-<div class="card p-3">
-    <dl class="row mb-0">
-        <dt class="col-sm-3">ID</dt>
-        <dd class="col-sm-9">#PART-{{ $sparepart->id }}</dd>
+<div class="card p-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Part ID</label>
+                <p class="mt-1 text-lg font-semibold">#PART-{{ str_pad($sparepart->id, 4, '0', STR_PAD_LEFT) }}</p>
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Part Name</label>
+                <p class="mt-1 text-lg font-semibold">{{ $sparepart->name }}</p>
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Category</label>
+                <span class="inline-flex items-center mt-1 px-3 py-1 rounded-full text-sm font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
+                    {{ $sparepart->category }}
+                </span>
+            </div>
 
-        <dt class="col-sm-3">Name</dt>
-        <dd class="col-sm-9">{{ $sparepart->name }}</dd>
+            <div>
+                <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Stock Quantity</label>
+                <div class="mt-1 flex items-center gap-2">
+                    <span class="text-2xl font-bold {{ $sparepart->quantity > 10 ? 'text-emerald-600' : ($sparepart->quantity > 0 ? 'text-amber-600' : 'text-red-600') }}">
+                        {{ $sparepart->quantity }}
+                    </span>
+                    <span class="text-sm text-gray-500">units</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Unit Price</label>
+                <p class="mt-1 text-lg font-semibold">${{ number_format($sparepart->price, 2) }}</p>
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Total Value</label>
+                <p class="mt-1 text-lg font-semibold text-emerald-600">${{ number_format($sparepart->price * $sparepart->quantity, 2) }}</p>
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Created</label>
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{{ $sparepart->created_at?->format('M j, Y \a\t g:i A') }}</p>
+            </div>
 
-        <dt class="col-sm-3">Category</dt>
-        <dd class="col-sm-9">{{ $sparepart->category }}</dd>
-
-        <dt class="col-sm-3">Quantity</dt>
-        <dd class="col-sm-9">{{ $sparepart->quantity }}</dd>
-
-        <dt class="col-sm-3">Price</dt>
-        <dd class="col-sm-9">{{ number_format($sparepart->price, 2) }}</dd>
-
-        <dt class="col-sm-3">Created</dt>
-        <dd class="col-sm-9">{{ $sparepart->created_at?->format('Y-m-d H:i') }}</dd>
-
-        <dt class="col-sm-3">Updated</dt>
-        <dd class="col-sm-9">{{ $sparepart->updated_at?->format('Y-m-d H:i') }}</dd>
-    </dl>
+            <div>
+                <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Last Updated</label>
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{{ $sparepart->updated_at?->format('M j, Y \a\t g:i A') }}</p>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
