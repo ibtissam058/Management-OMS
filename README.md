@@ -211,7 +211,7 @@ If you encounter any issues or have questions:
 
 1. Check the [Issues](https://github.com/yourusername/OCP-MS/issues) page
 2. Create a new issue with detailed information
-3. Contact the development team
+3. Contact the development team(me :see_no_evil:)
 
 ## 🙏 Acknowledgments
 
