@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Management OSM')</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.ico') }}">
 
     {{-- Figtree (Laravel default) --}}
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -19,7 +22,7 @@
     {{-- Sidebar --}}
     <aside class="hidden lg:flex lg:w-64 lg:flex-col lg:gap-4 lg:py-6 lg:px-4 border-r border-gray-800" style="background-color: rgb(25, 25, 25);">
         <a href="{{ route('dashboard') }}" class="flex items-center gap-2 px-2">
-            <span class="inline-flex size-9 items-center justify-center rounded-xl bg-indigo-600 text-white font-semibold">OSM</span>
+            <img src="{{ asset('images/favicon.ico') }}" alt="OCP Maintenance Solutions" class="w-14 h-14">
             <div class="text-sm">
                 <div class="font-semibold">OCP Maintenance Solutions</div>
                 <div class="text-gray-500 dark:text-gray-400 text-xs">Management Console</div>
