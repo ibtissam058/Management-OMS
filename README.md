@@ -1,7 +1,7 @@
 # OCP-MS - Operations & Maintenance Management System
 
 <p align="center">
-  <img src="public/images/OMS.png" alt="OCP-MS Logo" width="200">
+  <img src="images/OMS.png alt="OCP-MS Logo" width="200">
 </p>
 
 <p align="center">
