@@ -7,10 +7,10 @@
   :root {
     --bg: 15 15 15;          /* Very dark background */
     --card: 25 25 25;        /* Dark card background */
-    --muted: 148 163 184;    /* slate-400 */
-    --ring: 51 65 85;        /* slate-600 */
-    --accent: 16 185 129;    /* emerald-500 */
-    --accent-600: 5 150 105; /* emerald-600 */
+    --muted: 148 163 184;    
+    --ring: 51 65 85;        
+    --accent: 16 185 129;    
+    --accent-600: 5 150 105; 
   }
   html { scroll-behavior: smooth; }
   body { @apply text-gray-100; background-color: rgb(var(--bg)); }
@@ -50,7 +50,7 @@
 
 /* Chart.js uses these tokens */
 :root {
-  --chart-grid: 75 85 99;   /* slate-700 */
+  --chart-grid: 75 85 99;  
   --chart-line: var(--accent);
-  --chart-fill: 16 185 129; /* emerald-500 */
+  --chart-fill: 16 185 129; 
 }
