@@ -19,9 +19,8 @@ class DashboardController extends Controller {
     $priorityCounts = \App\Models\WorkOrder::select('priority', DB::raw('count(*) as c'))
         ->groupBy('priority')->pluck('c','priority');
 
-    // 30-day trend (change SUM(cost) to COUNT(*) if you don't have a cost column)
+    // 30-day trend 
     $daily = \App\Models\WorkOrder::selectRaw('DATE(created_at) d, COUNT(*) c')
-        // ->selectRaw('DATE(created_at) d, SUM(cost) c') // use this if you have a numeric "cost" column
         ->where('created_at','>=', now()->subDays(30))
         ->groupBy('d')->orderBy('d')->get();
 
