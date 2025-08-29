@@ -18,7 +18,6 @@ class ReportController extends Controller
         return view('reports.index', $data);
     }
 
-    // >>> THE METHOD YOU WERE MISSING <<<
     public function export(Request $request): StreamedResponse
     {
         $data = $this->buildReportData($request);
