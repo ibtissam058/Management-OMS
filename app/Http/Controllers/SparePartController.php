@@ -53,7 +53,7 @@ class SparePartController extends Controller
             return redirect()->back()->with('error', 'Failed to add spare part: ' . $e->getMessage())->withInput();
         }
         
-        //SparePart::create($request->all());
+
         return redirect()->route('inventory.index')->with('success', 'SparePart added');
     }
 
